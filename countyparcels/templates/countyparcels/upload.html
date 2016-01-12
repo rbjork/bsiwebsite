@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Upload CSV</title>
+</head>
+
+<body bgcolor="#003399">
+{% load staticfiles %}
+
+<form action="counties/upload_csv" method="post" enctype="multipart/form-data" >
+
+    <TABLE BORDER=0 CELLPADDING=0 WIDTH="1051" align="center" cellpadding="10" cellspacing="10" bgcolor="#ffffff" >
+        <tr><td><img src="{% static "images/BSI_banner_order.png" %}" align="center"  /></td></tr>
+        <tr><td align="center"><h3 align="center">Select CSV to upload</h3></td></tr>
+        <tr><td>Step 1: <input type="file" name="orderpage" id="orderpage"></td></tr>
+        <tr><td align="left">Step 2: <input type="submit" value="Upload CSV" name="submit" align="right"></td></tr>
+        <tr height="100px"><td > First click 'Choose File', browse to file, then click 'Upload CSV'</td></tr>
+    </TABLE>
+</form>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Parcel Catalog</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script language="javascript">
+	  $(function() {
+		$( "#tabs" ).tabs();
+	  });
+	</script>
+	<style type="text/css">
+		.ShoppingCart{
+			background:#ffffff;
+		}
+        .TFtable{
+            width:990px;
+            border-collapse:collapse;
+			font-size:12px;
+        }
+        .TFtable td{
+            padding:7px; border:#4e95f4 1px solid;
+        }
+        /* provide some minimal visual accomodation for IE8 and below */
+        .TFtable tr{
+            background: #ffffff;
+        }
+        /*  Define the background color for all the ODD background rows  */
+        .TFtable tr:nth-child(odd){
+            background: #ffffff;
+        }
+        /*  Define the background color for all the EVEN background rows  */
+        .TFtable tr:nth-child(even){
+            background: #ffffff;
+        }
+        .ConfirmTable{
+            width:1024;
+            border-collapse:collapse;
+        }
+        .ConfirmTable td{
+            padding:7px; border:#4e95f4 1px solid;
+        }
+        /* provide some minimal visual accomodation for IE8 and below */
+        .ConfirmTable tr{
+            background: #b8d1f3;
+        }
+
+        .ConfirmTable p{
+            background: #003399;
+        }
+
+        /*  Define the background color for all the ODD background rows  */
+        .ConfirmTable tr:nth-child(odd){
+            background: #ffffff;
+        }
+        /*  Define the background color for all the EVEN background rows  */
+        .ConfirmTable tr:nth-child(even){
+            background: #f0f0f0;
+        }
+		.BSICheckbox span {
+			width: 30px;
+			height: 30px;
+			display: block;
+		}
+		.Statelist {
+			color:#0000FF;
+			width:90%;
+
+		}
+		input[type="checkbox"] {
+			transform: scale(1.5);
+  			/* Webkit browsers */
+  			-webkit-transform: scale(1.5);
+		}
+
+		#clearselected
+		{
+			background:#CCCC66;
+		}
+		
+		#requestquote
+		{
+			background:#66CC66;
+		}
+		
+		#clearshoppingcart2
+		{
+			background:#CCCC66;
+		}
+
+		#showcart
+		{
+			background:#66CC66;
+		}
+
+		#addshoppingcart
+		{
+			background:#66cc66;
+		}
+
+		#tab-1 {
+			background-image: none;
+			background-color : #f0f0f0;
+			font-weight : normal;
+			height: 0px;
+			visibility: hidden;
+		}
+		
+		#tab-2 {
+			background-image : none;
+			background-color : #66cc99;
+			font-weight :normal;
+			height: 0px;
+			visibility: hidden;
+		}
+
+		#notelargeorder{
+			font-weight:lighter;
+			font-size:small;
+			color:#003399;
+
+		}
+
+		input[type=button]
+		{
+			background: #6699cc;
+			color:#FFF;
+			height:30px;
+		}
+
+    .Formtrim
+    {
+      border-color: #cccccc;
+      border-width:thick;
+      border-style:solid;
+    }
+
+  	.SelectMode
+  	{
+      border-collapse:collapse;
+      padding: 0px;
+      font-size: small;
+      font-weight: normal;
+  	}
+
+    </style>
+
+
+</head>
+<body leftmargin="20px" rightmargin="20px"   bgcolor="#003399" style="background: url('/static/images/parcelbackground.JPG');"   >
+  <center>
+<table width="1024px" height="100%" class="Formtrim">
+<tr>
+<td>
+
+{% load staticfiles %}
+<center>
+<img src="{% static "images/BSI_banner_order_v2.png" %}" align="middle"  />
+
+</center>
+<div id="tabs" class="ui-tabs" style="width:1000;margin:auto;clear:both;padding:auto" >
+  <ul>
+    <li id="tab-1"><a href="#tabs-1">Parcels Catalog</a></li>
+    <li id="tab-2"><a href="#tabs-2">Show Final Selection</a></li>
+  </ul>
+
+<div id="tabs-1" style="width:850;margin:auto;clear:both;padding:auto;"  >
+<form>
+<center>
+<b>CATALOG</b>
+<div class="Statelist" align="center">
+<b>Links To States:</b>
+{% for statename in states %}
+	<a href=#{{statename}}> {{statename}} </a>
+{% endfor %}
+</div>
+</center><br>
+<div align="left" id="notelargeorder">Note: For large orders price is generally discounted. Request a quote in your final selection.
+
+</div>
+
+<table cellpadding="2" class="TFtable" id="mytable" align="center" border="4" bordercolor="#cccccc">
+<col width="25px">
+<col width="60px">
+<col width="60px">
+<col width="60px">
+<col width="95px">
+<col width="95px">
+<col width="60px">
+<col width="60px">
+<col width="60px">
+<col width="30px">
+<col width="30px">
+<col width="30px">
+<col width="30px">
+<col width="60px">
+<col width="60px">
+<col width="60px">
+<col width="60px">
+
+<tr bgcolor="0000cc">
+<th colspan="4" align="center" id="numberselected">Selected: 0</th>
+<th colspan="3" align="left"> x $175.00 </th>
+<th colspan="3" align="left" id="totalpriceofselected">= $0.00 </th>
+<th colspan="1" align="left"><input type="button" id="clearselected" value="1: CLEAR SELECTED"></th>
+<th colspan="2" align="right"><input type="button" id="addshoppingcart" value="2: ADD TO FINAL SELECTION" ></th>
+<th colspan="3" align="left"><input type="button" id="showcart" value="3: SHOW FINAL SELECTION"></th>
+<th colspan="2" rowspan="2" align="center"></th>
+
+
+
+<!--<th colspan="2" align="left"><input type="button" id="specialselect" value="SPECIAL SELECT"></th>-->
+
+</tr>
+<tr>
+<td colspan="4">
+<input type="button" id="selectall" value="SELECT ALL STATES">
+</td>
+<td align="left" colspan="13">Require
+<select id="selectattribute_cb">
+<option value="apn">APN</option>
+<option value="sit">Situs</option>
+<option value="owner">Owner</option>
+<option value="use">Land Use</option>
+<option value="val">Value</option>
+<option value="flr">Floors</option>
+<option value="unt">Unit</option>
+<option value="yrb">Year Built</option>
+</select>
+coverage greater than
+<select id="selectpercent_cb">
+<option value="0">0%</option>
+<option value="50">50%</option>
+<option value="75">75%</option>
+<option value="90">90%</option>
+</select>
+complete:
+<input type="button" id="specialselect"  height="30px" value="Apply requirement to catalog" style="height:25px">
+<input type="button" id="resettofullcatalog" height="30px" value="Reset" style="height:25px">
+</td>
+</tr>
+<tr><td colspan="16"><b>INSTRUCTIONS:</b> <b>1:</b> Clear prior selections by clicking 'Clear Selected'. <b>2</b>: Select counties and click 'Add to Final Selection'. <b>3:</b> Click 'Show Final Selection'</td></tr>
+{% for state, counties in statecounties %}
+	<tr><td colspan=16><center><h3 id="{{state}}" >{{state}}</h3><a href="#">Go back to top</a></center></td></tr>
+	<tr><th colspan="2" name="{{state}}"  ><input type="button" name="selectstate" value="All"  style="width:60px"></th><th>FIP</th><th>STATE</th><th colspan="2"  >  COUNTY  </th><th>VERSION</th><th>COMP</th><th>%APN</th><th>%SIT</th><th>%OWN</th><th>%USE</th><th>%VAL</th><th>%FLR</th><th>%UNIT</th><th>%YRB</th></tr>
+	{% for col in counties %}
+    <tr><td></td><td><input type="checkbox" name="{{state}}" value="{{col.fip}}" id="{{col.fip}}"  class="BSICheckbox" > </td>
+          <td >{{ col.fip }}</td>
+            <td >{{ col.state }}</td>
+            <td colspan="2" >{{ col.county }}</td>
+            <td>{{ col.version }}</td>
+            <td>{{ col.comp }}</td>
+            <td>{{ col.apnpercent }}</td>
+            <td>{{ col.sitpercent }}</td>
+            <td>{{ col.ownpercent }}</td>
+            <td>{{ col.usepercent }}</td>
+            <td>{{ col.valpercent }}</td>
+            <td>{{ col.flrpercent }}</td>
+            <td>{{ col.untpercent }}</td>
+            <td>{{ col.ybrpercent }}</td>
+
+    </tr>
+    {% endfor %}
+{% endfor %}
+
+</table>
+</form>
+</div>
+
+<div tab="tabs-2" style="width:850;margin:auto;clear:both;padding:auto;background:transparent;">
+<form class="ShoppingCart" id="shoppingcartform">
+{% csrf_token %}
+<h3 align="center" id="titleconfirm" style="visibility:hidden" ><font color="cfcf66">Boundary Solutions County Parcels Data Order Confirmation</font></h3>
+<h4 align="center">FINAL SELECTION</h4>
+<table  class="ConfirmTable" align="center">
+	<tr><th colspan="15" align="right"><input type="button" id='showcatalog' value='BACK TO CATALOG'><input type="button" id="clearshoppingcart2" value="CLEAR SHOPPING CART"><input type="button" id="requestquote" value="4: REQUEST QUOTE"></th></tr>
+</table>
+<table  id="orderquotetable" class="ConfirmTable" align="center">
+<tr id="cartheading"><th>FIP</th><th>STATE</th><th>COUNTY</th><th>VERSION</th><th>COMP</th><th>%APN</th><th>%SIT</th><th>%OWN</th><th>UUSE</th><th>VAL</th><th>FLR</th><th>UNIT</th><th>YRBUILT</th><th>PRICE</th></tr>
+</table>
+
+	<script language="javascript">
+
+		var directOrderMax = 5;
+		//var BASE_URL = "http://159.203.94.166/";
+
+		var BASE_URL = "http://127.0.0.1:8000/";
+		var picks = [];
+		var pickstable = [];
+
+		function populateShoppingCart(){
+			$('#orderquotetable tr').not(':first').not(':last').remove();
+			if(pickstable.length <= directOrderMax){
+				$('#buynow').show()
+			}else{
+				$('#buynow').hide()
+			}
+			var html = '';
+			var unitcost = 175;
+			var totalprice = unitcost * pickstable.length;
+			for(var i = 0; i < pickstable.length; i++)
+						html += '<tr><td>' + pickstable[i][0] + '</td><td>' + pickstable[i][1] + '</td><td>' + pickstable[i][2] + '</td><td>' + pickstable[i][3] + '</td><td>' + pickstable[i][4] + '</td><td>' + pickstable[i][5] + '</td><td>' + pickstable[i][6] + '</td><td>' + pickstable[i][7] + '</td><td>' + pickstable[i][8] + '</td><td>' + pickstable[i][9] + '</td><td>' + pickstable[i][10] + '</td><td>' + pickstable[i][11] + '</td><td>' + pickstable[i][12] + '</td><td>$175</td></tr>';
+			//$('#orderquotetable tr').remove(); // Need way to clear prior shopping cart
+			$('#orderquotetable tr[id="cartheading"]').after(html);
+			//$('#orderquotetable').after("<p class='Confirmtable'>$" + totalprice + '</p>')
+		}
+
+		function updateDisplayCount(){
+			var pickcount = 0;
+			$('#mytable').find('input[type="checkbox"]:checked').each(function () {
+                pickcount = pickcount + 1;
+			});
+			$('#numberselected').html("Selected: " + pickcount);
+			$('#totalpriceofselected').html(" = $" + pickcount*175 + ".00 Total");
+		}
+
+		$("input[name='viewmode']").change(function(){
+			var choice = $("input[name='viewmode']:checked").val();
+			if(choice == "table"){
+				window.location = BASE_URL + "countyparcels";
+			}else{
+				window.location = BASE_URL + "countyparcels/mapview";
+			}
+		});
+
+		$('#buynow').click(function(){
+			var jpicks = JSON.stringify(picks);
+			$.post( "requestpurchase",{csrfmiddlewaretoken: '{{csrf_token}}',counties:jpicks}).done(function(){
+				window.location = BASE_URL + "countyparcels/buyform"
+			});
+		});
+
+		$('#requestquote').click(function(){
+			var jpicks = JSON.stringify(picks);
+			$.post("requestforquote",{csrfmiddlewaretoken: '{{csrf_token}}',counties:jpicks}).done(function(){
+				window.location = BASE_URL + "countyparcels/quoteform"
+			});
+		});
+
+		$("input[type='button'][name='selectstate']").click(function(){
+			var statename = $(this).parent().attr('name');
+			var arechecked = false;
+			$('#mytable').find('input[type="checkbox"][name="'+statename+'"]:checked').each(function () {
+				$(this).prop('checked', false);
+				arechecked = true;
+			});
+			if(arechecked == false){
+				$('#mytable').find('input[type="checkbox"][name="'+statename+'"]').each(function () {
+					$(this).prop('checked', true);
+				});
+				$(this).prop('value','None');
+			}else{
+				$(this).prop('value','All');
+			}
+			updateDisplayCount();
+		});
+
+		function clearcatalogselection(){
+		  $('#mytable').find('input[type="checkbox"]').each(function () {
+					$(this).prop('checked', false);
+			})
+		  $('#mytable').find('input[name="selectstate"]').each(function () {
+					$(this).prop('value', "All");
+			})
+			updateDisplayCount();
+		};
+
+		$('#showcatalog').click(function(){
+			$('#tabs').tabs({active:0});
+		});
+
+		$('#showcart').click(function(){
+		  //$("#tabs").tabs("select" , "#tab-2");
+		  var index = $('#tabs').index($('#tabs-2'));
+		  $('#tabs').tabs({active:1});
+		});
+
+		$('#clearselected').click(function(){
+			$('#mytable').find('input[type="checkbox"]').each(function () {
+				$(this).prop('checked', false);
+			})
+			clearcatalogselection();
+		});
+/*
+		$('#clearshoppingcart').click(function () {
+			$('#addshoppingcart').val("Add to Shopping Cart");
+			$('#orderquotetable tr').not(':first').remove();
+      clearcatalogselection();
+		});
+*/
+		$('#clearshoppingcart2').click(function () {
+			$('#addshoppingcart').val("2: Add to Shopping Cart");
+			$('#orderquotetable tr').not(':first').remove();
+			clearcatalogselection();
+		});
+
+		$('#addshoppingcart').click(function () {
+			 picks = [];
+			 pickstable = [];
+			 $('#addshoppingcart').val("2: Update Shopping Cart")
+
+			 $('#mytable').find('input[type="checkbox"]:checked').each(function () {
+				var $row = jQuery(this).closest('tr');
+			 	var $columns = $row.find('td');
+			 	$columns.addClass('row-highlight');
+				var row = [];
+			 	jQuery.each($columns, function(i, item) {
+				 	if(i>1)row.push(item.innerHTML);
+			 	});
+				console.log(row);
+				pickstable.push(row);
+				//picks.push($(this).prop('id'));
+				picks.push({fip:row[0], state: row[1], county:row[2]})
+			 });
+
+			 //var jdata = JSON.stringify({"fips" : picks})
+			 if(picks.length > 0){
+				/* $.ajax({
+					type: "POST",
+					url:'savetoshoppingcart',
+					contentType: "application/json; charset=utf-8",
+					data: JSON.stringify(picks),
+					success: function(data) {
+						populateShoppingCart();
+					}
+				}); */
+				populateShoppingCart();
+			 }
+			 return false;
+		});
+
+		$('#specialselect').click(function(){
+			minpercent = $('#selectpercent_cb').val();
+			attributeselection = $('#selectattribute_cb').val();
+			window.location = BASE_URL + "countyparcels/specialselect?minpercent="+minpercent+"&attribute="+attributeselection;
+		});
+
+		$('#resettofullcatalog').click(function(){
+			window.location = BASE_URL + "countyparcels";
+		});
+
+		$('#selectall').click(function(){
+			$('#mytable').find('input[type="checkbox"]').each(function () {
+				$(this).prop('checked', true);
+			});
+		$('#mytable').find('input[type="button"][name="selectstate"]').prop('value','None')
+			updateDisplayCount();
+		});
+
+
+
+		$('#mytable :checkbox').click(function() {
+			var $this = $(this);
+			// $this will contain a reference to the checkbox
+			var pickcount = 0;
+			$('#mytable').find('input[type="checkbox"]:checked').each(function () {
+				pickcount = pickcount + 1;
+			});
+			$('#numberselected').html("Selected: " +pickcount);
+			$('#totalpriceofselected').html(" = $" + pickcount*175 + ".00 Total");
+		});
+
+
+	</script>
+
+</form>
+<br>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</center>
+
+</body>
+</html>

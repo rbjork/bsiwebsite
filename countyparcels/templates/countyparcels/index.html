@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>County Parcels</title>
+</head>
+<body>
+<table cellpadding="5" class="TFtable" id="mytable">
+ <tr bgcolor="0000cc">
+        <th colspan="2" align="left" id="numberselected">Number Selected: 0</th>
+        <th colspan="3" align="left"> x $175.00 per county</th>
+        <th colspan="2" align="left" id="totalpriceofselected">= $0.00 Total</th>
+        <th colspan="3" align="left"><input type="button" id="clearselected" value="CLEAR SELECTED"></th>
+        <th colspan="2" align="right"><input type="button" id="addshoppingcart" value="ADD TO SHOPPING CART" ></th>
+        <th colspan="3" align="left"><input type="button" id="clearshoppingcart" value="CLEAR SHOPPING CART"></th>
+ </tr>
+{% if latest_countyparcels_list %}
+
+    {% for countyparcels in latest_countyparcels_list %}
+        <tr>
+        <td>{{ countyparcels.fips }}</td>
+        <td>{{ countyparcels.state }}</td>
+        <td>{{ countyparcels.county }}</td>
+        <td>{{ countyparcels.ventor }}</td>
+        <td>{{ countyparcels.apnpercent }}</td>
+        <td>{{ countyparcels.sitpercent }}</td>
+        <td>{{ countyparcels.ownpercent }}</td>
+        <td>{{ countyparcels.usepercent }}</td>
+        <td>{{ countyparcels.flrpercent }}</td>
+        <td>{{ countyparcels.unitpercent }}</td>
+        <td>{{ countyparcels.yrbpercent}}</td>
+        </tr>
+    {% endfor %}
+
+{% else %}
+    <p>No counties are available.</p>
+{% endif %}
+</body>
+</html>
+

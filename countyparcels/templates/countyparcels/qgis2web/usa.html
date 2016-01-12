@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="/static/resources/ol.css" >
+    <link rel="stylesheet" href="/static/resources/ol3-layerswitcher.css">
+    <style>
+      html, body {
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          font-family: sans-serif;
+          font-size: small;
+        }
+        #map {
+          width: 100%;
+          height: 100%;
+        }
+
+      .ol-popup {
+        display: none;
+        position: absolute;
+        background-color: white;
+        -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+        filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #cccccc;
+        bottom: 12px;
+        left: -50px;
+        height: auto;
+        width: auto;
+        min-width: 100px;
+      }
+
+      .ol-popup-closer {
+        text-decoration: none;
+        position: absolute;
+        top: 2px;
+        right: 8px;
+      }
+      .ol-popup-closer:after {
+        content: "X";
+      }
+
+      .Formtrim
+      {
+        border-color: #cccccc;
+        border-width:thick;
+        border-style:solid;
+        background: #ffffff;
+      }
+      .Statelist {
+  			color:#0000FF;
+  			width:100%;
+        font-size:small;
+        align-content: center;
+  		}
+      .SelectMode
+    	{
+        border-collapse:collapse;
+        padding: 0px;
+        font-size: small;
+        font-weight: normal;
+    	}
+    </style>
+    <script src="/static/resources/ol.js"></script>
+    <script src="/static/resources/ol3-layerswitcher.js" ></script>
+
+    <script src="/static/layers/counties.js"></script>
+    <script src="/static/styles/counties_style.js"></script>
+    <script src="/static/layers/layers.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <title></title>
+  </head>
+  <body leftmargin="20px" rightmargin="20px"    bgcolor="#003399" style="background: url('/static/images/parcelbackground.JPG');">
+  <br>
+    {% load staticfiles %}
+	<center>
+  <table width="1080px" height="660px" class="Formtrim" >
+    <tr>
+    <td style="align-content:center">
+      <center>
+	<img src="{% static "images/BSI_banner_order_v3.png" %}" align="middle" id="headerimage"  />
+  <div class="Statelist" align="center">
+
+  {% for statename in states %}
+  	<a href=#{{statename}}> {{statename}} </a>
+  {% endfor %}
+  </div>
+
+  <table cellpadding="2" class="TFtable" id="mytable" style="width:99%" align="center" border="4" bordercolor="#cccccc">
+  <col width="25px">
+  <col width="60px">
+  <col width="60px">
+  <col width="60px">
+  <col width="95px">
+  <col width="95px">
+  <col width="60px">
+  <col width="60px">
+  <col width="60px">
+  <col width="30px">
+  <col width="30px">
+  <col width="30px">
+  <col width="30px">
+  <col width="60px">
+  <col width="60px">
+  <col width="60px">
+
+  <tr bgcolor="0000cc" style="color:#ffffff;background:#003399">
+  <th colspan="2" align="left" id="numberselected">Selected: 0</th>
+  <th colspan="2" align="left"> x $175.00 </th>
+  <th colspan="2" align="left" id="totalpriceofselected">= $0.00 </th>
+  <th colspan="2" align="left"><input type="button" id="clearselected" value="CLEAR SELECTED"></th>
+  <th colspan="2" align="left"><input type="button" id="addshoppingcart" value="ADD TO FINAL SELECTION" ></th>
+  <th colspan="3" align="left"><input type="button" id="showcart" value="SHOW FINAL SELECTION"></th>
+  <th colspan="3" rowspan="2" align="center"><table class="SelectMode"><tr><td >SELECTION MODE<br><input type="radio" id="showTableView" name="viewmode" value="table"  >COUNTY (BULK)<br> <input type="radio" checked name="viewmode" value="map" >GEOGRAPHIC</td></tr></table></th>
+
+
+
+  <!--<th colspan="2" align="left"><input type="button" id="specialselect" value="SPECIAL SELECT"></th>-->
+
+  </tr>
+  <tr>
+  <td colspan="2" rowspan="2">
+  <input type="button" id="selectall" value="ALL STATES">
+  </td>
+  <td align="left" colspan="11">Select parcels by
+  <select>
+  <option value="">proximity</option>
+  <option value="">boundary</option>
+  </select>
+  of a
+  <select>
+  <option value="0">1/8 mile</option>
+  <option value="50">1/4 mile</option>
+  <option value="75">1/2 mile</option>
+  <option value="90">1 mile</option>
+  </select>
+  from
+  <select>
+  <option value="0">lat,long</option>
+  <option value="50">address</option>
+  <option value="75">road</option>
+  <option value="90">highway</option>
+  <option value="90">railroad</option>
+  <option value="90">shoreline</option>
+  </select>
+  of value:
+  <input type="text" id="filtervalue" >
+  <input type="button" id="specialfind"  height="30px" value="Find" style="height:25px">
+  <input type="button" id="specialselect"  height="30px" value="Apply" style="height:25px">
+  </td>
+  </tr>
+
+</table>
+	</center>
+    <div id="map">
+        <div id="popup" class="ol-popup">
+          <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+          <div id="popup-content"></div>
+        </div>
+    </div>
+
+    <script language="javascript">
+
+  		var directOrderMax = 5;
+  		//var BASE_URL = "http://159.203.94.166/";
+  		var BASE_URL = "http://127.0.0.1:8000/";
+  		var picks = [];
+  		var pickstable = [];
+
+      $(document).ready(function(){
+          location.href = "#headerimage";
+
+      });
+
+
+
+  		$("input[name='viewmode']").change(function(){
+    			var choice = $("input[name='viewmode']:checked").val();
+    			if(choice == "table"){
+    				window.location = BASE_URL + "countyparcels";
+    			}else{
+    				window.location = BASE_URL + "countyparcels/mapview";
+    			}
+    	});
+    </script>
+    <script>
+      var container = document.getElementById('popup');
+      var content = document.getElementById('popup-content');
+      var closer = document.getElementById('popup-closer');
+      closer.onclick = function() {
+        container.style.display = 'none';
+        closer.blur();
+        return false;
+      };
+      var overlayPopup = new ol.Overlay({
+        element: container
+      });
+
+      var map = new ol.Map({
+        controls: ol.control.defaults().extend([
+          new ol.control.ScaleLine({}),new ol.control.LayerSwitcher({tipLabel: "Layers"})
+        ]),
+        target: document.getElementById('map'),
+        renderer: 'canvas',
+        overlays: [overlayPopup],
+        layers: layersList,
+        view: new ol.View({
+           maxZoom: 28, minZoom: 4
+        })
+      });
+
+      map.getView().fit([-14999037.625526, 2850470.157655, -7417452.621995, 7880148.302044], map.getSize());
+      //map.getView().fit([0.625526, 2850470.157655, 0, 5880148.302044], map.getSize());
+      //map.zoomTo(12);
+      map.setCenter(new OpenLayers.LonLat(-122.0, 37.0), 5);
+
+      var NO_POPUP = 0
+      var ALL_FIELDS = 1
+
+      popupLayers = ["name"];
+
+      var collection = new ol.Collection();
+      var featureOverlay = new ol.layer.Vector({
+        map: map,
+        source: new ol.source.Vector({
+          features: collection,
+          useSpatialIndex: false // optional, might improve performance
+        }),
+        style: [new ol.style.Style({
+              stroke: new ol.style.Stroke({
+                color: '#f00',
+                width: 1
+              }),
+              fill: new ol.style.Fill({
+                color: 'rgba(255,0,0,0.1)'
+              }),
+              })],
+        updateWhileAnimating: true, // optional, for instant visual feedback
+        updateWhileInteracting: true // optional, for instant visual feedback
+      });
+
+      var doHighlight = true;
+      var doHover = false;
+
+      var highlight;
+      var onPointerMove = function(evt) {
+        if (!doHover && !doHighlight){
+          return;
+        }
+        var pixel = map.getEventPixel(evt.originalEvent);
+        var coord = evt.coordinate;
+        var popupField;
+        var popupText = '';
+        var currentFeature;
+        var currentFeatureKeys;
+        map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+          currentFeature = feature;
+          currentFeatureKeys = currentFeature.getKeys();
+          var field = popupLayers[layersList.indexOf(layer) - 1];
+          if (field == NO_POPUP){
+          }
+          else if (field == ALL_FIELDS){
+            for ( var i=0; i<currentFeatureKeys.length;i++) {
+                if (currentFeatureKeys[i] != 'geometry') {
+                    popupField = currentFeatureKeys[i] + ': '+ currentFeature.get(currentFeatureKeys[i]);
+                    popupText = popupText + popupField+'<br>';
+                }
+            }
+          }
+          else{
+            var value = feature.get(field);
+            if (value){
+              popupText = field + ': ' + value;
+            }
+          }
+        });
+
+        if (doHighlight){
+          if (currentFeature !== highlight) {
+            if (highlight) {
+              featureOverlay.getSource().removeFeature(feature);
+            }
+            if (currentFeature) {
+              featureOverlay.getSource().addFeature(feature);
+            }
+            highlight = currentFeature;
+          }
+        }
+
+        if (doHover){
+          if (popupText) {
+            overlayPopup.setPosition(coord);
+            content.innerHTML = popupText;
+            container.style.display = 'block';
+          } else {
+            container.style.display = 'none';
+            closer.blur();
+          }
+        }
+      };
+
+      var onSingleClick = function(evt) {
+        if (doHover){
+          return;
+        }
+        var pixel = map.getEventPixel(evt.originalEvent);
+        var coord = evt.coordinate;
+        var popupField;
+        var popupText = '';
+        var currentFeature;
+        var currentFeatureKeys;
+        map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+          currentFeature = feature;
+          currentFeatureKeys = currentFeature.getKeys();
+          var field = popupLayers[layersList.indexOf(layer) - 1];
+          if (field == NO_POPUP){
+          }
+          else if (field == ALL_FIELDS){
+            for ( var i=0; i<currentFeatureKeys.length;i++) {
+                if (currentFeatureKeys[i] != 'geometry') {
+                    popupField = currentFeatureKeys[i] + ': '+ currentFeature.get(currentFeatureKeys[i]);
+                    popupText = popupText + popupField+'<br>';
+                }
+            }
+          }
+          else{
+            var value = feature.get(field);
+            if (value){
+              popupText = field + ': '+ value;
+            }
+          }
+        });
+
+        if (popupText) {
+            overlayPopup.setPosition(coord);
+            content.innerHTML = popupText;
+            container.style.display = 'block';
+        } else {
+          container.style.display = 'none';
+          closer.blur();
+        }
+      };
+
+      map.on('pointermove', function(evt) {
+        onPointerMove(evt);
+      });
+      map.on('singleclick', function(evt) {
+        onSingleClick(evt);
+      });
+      </script>
+    </center>
+    </td >
+  </td>
+</table>
+  </body>
+</html>

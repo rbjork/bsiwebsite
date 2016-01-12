@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<WebEditorProject>
+    <!---->
+    <ProjectInformation>
+        <ProjectName>BSIOrdering</ProjectName>
+        <ProjectVersion>2.0</ProjectVersion>
+        <ServerInfo ServerID="-1"></ServerInfo>
+        <S-DriveURL></S-DriveURL>
+    </ProjectInformation>
+    <!---->
+    <ProjectTreeFirstLevel>
+        <Node Type="2" LinkName="">./countyparcels/</Node>
+        <Node Type="2" LinkName="">./django_project/</Node>
+        <Node Type="2" LinkName="">./django_project_save/</Node>
+        <Node Type="2" LinkName="">./mapsui/</Node>
+        <Node Type="2" LinkName="">./parcelsordering/</Node>
+        <Node Type="2" LinkName="">./static/</Node>
+        <Node Type="5" LinkName="">./bsicountyparcels</Node>
+        <Node Type="5" LinkName="">./createcountiesstable.sql</Node>
+        <Node Type="5" LinkName="">./createparcelstable.sql</Node>
+        <Node Type="5" LinkName="">./manage.py</Node>
+        <Node Type="5" LinkName="">./manageparcelsordering.py</Node>
+        <Node Type="5" LinkName="">./models.py</Node>
+        <Node Type="5" LinkName="">./orderpage.csv</Node>
+        <Node Type="5" LinkName="">./countyparcels/templates/countyparcels/qgis2web/simple.html</Node>
+    </ProjectTreeFirstLevel>
+    <!---->
+    <ShowedFiles>
+        <ShowedFileEditor1 FirstVisibleLine="0" CursorPosition="0">./countyparcels/templates/countyparcels/requestforquote2.html</ShowedFileEditor1>
+    </ShowedFiles>
+    <!---->
+</WebEditorProject>
