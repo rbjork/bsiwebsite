@@ -153,6 +153,8 @@ def getSelectSpecial(request,misc):
 
     colnum = 13
     context = RequestContext(request, {
+        'minpercent':minpercent,
+        'attributemin':attributemin,
         'states': states,
         'statenumber': range(stateNumber),
         'statecounties': counties,
