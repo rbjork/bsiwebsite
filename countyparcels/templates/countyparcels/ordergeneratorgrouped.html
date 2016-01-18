@@ -6,59 +6,83 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script language="javascript" >
+	/**
+	* Created by ronaldbjork on 1/13/16.
+	*/
+	/*! modernizr 3.3.0 (Custom Build) | MIT *
+	* http://modernizr.com/download/?-audio-canvas-cssanimations-setclasses !*/
+	!function(e,n,t){function o(e,n){return typeof e===n}function r(){var e,n,t,r,a,s,i;for(var l in C)if(C.hasOwnProperty(l)){if(e=[],n=C[l],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(r=o(n.fn,"function")?n.fn():n.fn,a=0;a<e.length;a++)s=e[a],i=s.split("."),1===i.length?Modernizr[i[0]]=r:(!Modernizr[i[0]]||Modernizr[i[0]]instanceof Boolean||(Modernizr[i[0]]=new Boolean(Modernizr[i[0]])),Modernizr[i[0]][i[1]]=r),h.push((r?"":"no-")+i.join("-"))}}function a(e){var n=_.className,t=Modernizr._config.classPrefix||"";if(x&&(n=n.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(o,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),x?_.className.baseVal=n:_.className=n)}function s(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):x?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function i(e,n){return function(){return e.apply(n,arguments)}}function l(e,n,t){var r;for(var a in e)if(e[a]in n)return t===!1?e[a]:(r=n[e[a]],o(r,"function")?i(r,t||n):r);return!1}function u(e,n){return!!~(""+e).indexOf(n)}function f(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function c(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function d(){var e=n.body;return e||(e=s(x?"svg":"body"),e.fake=!0),e}function p(e,t,o,r){var a,i,l,u,f="modernizr",c=s("div"),p=d();if(parseInt(o,10))for(;o--;)l=s("div"),l.id=r?r[o]:f+(o+1),c.appendChild(l);return a=s("style"),a.type="text/css",a.id="s"+f,(p.fake?p:c).appendChild(a),p.appendChild(c),a.styleSheet?a.styleSheet.cssText=e:a.appendChild(n.createTextNode(e)),c.id=f,p.fake&&(p.style.background="",p.style.overflow="hidden",u=_.style.overflow,_.style.overflow="hidden",_.appendChild(p)),i=t(c,e),p.fake?(p.parentNode.removeChild(p),_.style.overflow=u,_.offsetHeight):c.parentNode.removeChild(c),!!i}function m(n,o){var r=n.length;if("CSS"in e&&"supports"in e.CSS){for(;r--;)if(e.CSS.supports(c(n[r]),o))return!0;return!1}if("CSSSupportsRule"in e){for(var a=[];r--;)a.push("("+c(n[r])+":"+o+")");return a=a.join(" or "),p("@supports ("+a+") { #modernizr { position: absolute; } }",function(e){return"absolute"==getComputedStyle(e,null).position})}return t}function y(e,n,r,a){function i(){c&&(delete E.style,delete E.modElem)}if(a=o(a,"undefined")?!1:a,!o(r,"undefined")){var l=m(e,r);if(!o(l,"undefined"))return l}for(var c,d,p,y,v,g=["modernizr","tspan"];!E.style;)c=!0,E.modElem=s(g.shift()),E.style=E.modElem.style;for(p=e.length,d=0;p>d;d++)if(y=e[d],v=E.style[y],u(y,"-")&&(y=f(y)),E.style[y]!==t){if(a||o(r,"undefined"))return i(),"pfx"==n?y:!0;try{E.style[y]=r}catch(h){}if(E.style[y]!=v)return i(),"pfx"==n?y:!0}return i(),!1}function v(e,n,t,r,a){var s=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+T.join(s+" ")+s).split(" ");return o(n,"string")||o(n,"undefined")?y(i,n,r,a):(i=(e+" "+S.join(s+" ")+s).split(" "),l(i,n,t))}function g(e,n,o){return v(e,t,t,n,o)}var h=[],C=[],w={_version:"3.3.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){C.push({name:e,fn:n,options:t})},addAsyncTest:function(e){C.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=w,Modernizr=new Modernizr;var _=n.documentElement,x="svg"===_.nodeName.toLowerCase();Modernizr.addTest("audio",function(){var e=s("audio"),n=!1;try{(n=!!e.canPlayType)&&(n=new Boolean(n),n.ogg=e.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,""),n.mp3=e.canPlayType('audio/mpeg; codecs="mp3"').replace(/^no$/,""),n.opus=e.canPlayType('audio/ogg; codecs="opus"').replace(/^no$/,""),n.wav=e.canPlayType('audio/wav; codecs="1"').replace(/^no$/,""),n.m4a=(e.canPlayType("audio/x-m4a;")||e.canPlayType("audio/aac;")).replace(/^no$/,""))}catch(t){}return n}),Modernizr.addTest("canvas",function(){var e=s("canvas");return!(!e.getContext||!e.getContext("2d"))});var P="Moz O ms Webkit",T=w._config.usePrefixes?P.split(" "):[];w._cssomPrefixes=T;var S=w._config.usePrefixes?P.toLowerCase().split(" "):[];w._domPrefixes=S;var b={elem:s("modernizr")};Modernizr._q.push(function(){delete b.elem});var E={style:b.elem.style};Modernizr._q.unshift(function(){delete E.style}),w.testAllProps=v,w.testAllProps=g,Modernizr.addTest("cssanimations",g("animationName","a",!0)),r(),a(h),delete w.addTest,delete w.addAsyncTest;for(var N=0;N<Modernizr._q.length;N++)Modernizr._q[N]();e.Modernizr=Modernizr}(window,document);
+  </script>
+  <script language="javascript">
+    if(Modernizr.cssanimations === false) {
+		// No Media Query Support Detected - do something
+      alert("Please upgrade your browser. This site is incompatible with older versions of IE.");
+
+    }
+  </script>
 	<script language="javascript">
 	  $(function() {
 		$( "#tabs" ).tabs();
 	  });
 	</script>
 	<style type="text/css">
-		.ShoppingCart{
-			background:#ffffff;
-		}
-        .TFtable{
-            width:990px;
-            border-collapse:collapse;
-			font-size:12px;
-        }
-        .TFtable td{
-            padding:7px; border:#4e95f4 1px solid;
-        }
-        /* provide some minimal visual accomodation for IE8 and below */
-        .TFtable tr{
-            background: #ffffff;
-        }
-        /*  Define the background color for all the ODD background rows  */
-        .TFtable tr:nth-child(odd){
-            background: #ffffff;
-        }
-        /*  Define the background color for all the EVEN background rows  */
-        .TFtable tr:nth-child(even){
-            background: #ffffff;
-        }
-        .ConfirmTable{
-            width:1024;
-            border-collapse:collapse;
-        }
-        .ConfirmTable td{
-            padding:7px; border:#4e95f4 1px solid;
-        }
-        /* provide some minimal visual accomodation for IE8 and below */
-        .ConfirmTable tr{
-            background: #b8d1f3;
-        }
+    .ShoppingCart{
+	     background:#ffffff;
+    }
+    .TFtable{
+        width:990px;
+        border-collapse:collapse;
+	      font-size:12px;
+    }
+    .TFtable td{
+        padding:7px; border:#4e95f4 1px solid;
+    }
+    /* provide some minimal visual accomodation for IE8 and below */
+    .TFtable tr{
+        background: #ffffff;
+    }
+    /*  Define the background color for all the ODD background rows  */
+    .TFtable tr:nth-child(odd){
+        background: #ffffff;
+    }
+    /*  Define the background color for all the EVEN background rows  */
+    .TFtable tr:nth-child(even){
+        background: #ffffff;
+    }
+    .ConfirmTable{
+        width:1024;
+        border-collapse:collapse;
+        border-color: #cccccc;
+        font-size: 14px;
+        padding: 5px;
+    }
+    .ConfirmTable th{
+        padding: 5px;
+    }
+    .ConfirmTable td{
+        padding:7px; border:#4e95f4 1px solid;
+    }
+    /* provide some minimal visual accomodation for IE8 and below */
+    .ConfirmTable tr{
+        background: #b8d1f3;
+    }
 
-        .ConfirmTable p{
-            background: #003399;
-        }
+    .ConfirmTable p{
+        background: #003399;
+    }
 
-        /*  Define the background color for all the ODD background rows  */
-        .ConfirmTable tr:nth-child(odd){
-            background: #ffffff;
-        }
-        /*  Define the background color for all the EVEN background rows  */
-        .ConfirmTable tr:nth-child(even){
-            background: #f0f0f0;
-        }
+    /*  Define the background color for all the ODD background rows  */
+    .ConfirmTable tr:nth-child(odd){
+        background: #ffffff;
+    }
+    /*  Define the background color for all the EVEN background rows  */
+    .ConfirmTable tr:nth-child(even){
+        background: #f0f0f0;
+    }
+    .ConfirmTable tr.newstate{
+        background-color: #cccccc;
+    }
 		.BSICheckbox span {
 			width: 30px;
 			height: 30px;
@@ -78,26 +102,43 @@
 		#clearselected
 		{
 			background:#CCCC66;
+			font-family:calibri;
+			font-size:14px
 		}
-		
+
 		#requestquote
 		{
 			background:#66CC66;
+			font-family:calibri;
+			font-size:14px
 		}
-		
+
 		#clearshoppingcart2
 		{
 			background:#CCCC66;
+			font-family:calibri;
+			font-size:14px
 		}
 
 		#showcart
 		{
 			background:#66CC66;
+			font-family:calibri;
+			font-size:14px
+		}
+
+		#showcatalog
+		{
+			background:#6699cc;
+			font-family:calibri;
+			font-size:14px
 		}
 
 		#addshoppingcart
 		{
 			background:#66cc66;
+			font-family:calibri;
+			font-size:14px
 		}
 
 		#tab-1 {
@@ -107,7 +148,7 @@
 			height: 0px;
 			visibility: hidden;
 		}
-		
+
 		#tab-2 {
 			background-image : none;
 			background-color : #66cc99;
@@ -128,6 +169,7 @@
 			background: #6699cc;
 			color:#FFF;
 			height:30px;
+			font-family:calibri;
 		}
 
     .Formtrim
@@ -135,6 +177,7 @@
       border-color: #cccccc;
       border-width:thick;
       border-style:solid;
+	  font-family:calibri;
     }
 
   	.SelectMode
@@ -145,11 +188,9 @@
       font-weight: normal;
   	}
 
-    </style>
-
-
+</style>
 </head>
-<body leftmargin="20px" rightmargin="20px"   bgcolor="#003399" style="background: url('/static/images/parcelbackground.JPG');"   >
+<body leftmargin="20px" rightmargin="20px"   bgcolor="#999fcc" style="font-family:calibri; background: url('/static/images/parcelbackground.JPG');"   >
   <center>
 <table width="1024px" height="100%" class="Formtrim">
 <tr>
@@ -166,7 +207,7 @@
     <li id="tab-2"><a href="#tabs-2">Show Final Selection</a></li>
   </ul>
 
-<div id="tabs-1" style="width:850;margin:auto;clear:both;padding:auto;"  >
+<div id="tabs-1" style="font-family:calibri;width:850;margin:auto;clear:both;padding:auto;font-size:14px"  >
 <form>
 <center>
 <b>CATALOG</b>
@@ -177,38 +218,37 @@
 {% endfor %}
 </div>
 </center><br>
-<div align="left" id="notelargeorder">Note: For large orders price is generally discounted. Request a quote in your final selection.
+<div align="left" id="notelargeorder" style="font-family:calibri; color:#cc0000; font-size:16px">
+&nbsp;&nbsp;&nbsp;<b>NOTE:</b> For large orders price is generally discounted. Request a quote in your final selection. IE 9+, Firefox 3+ or Chrome browser recommended.
 
 </div>
 
 <table cellpadding="2" class="TFtable" id="mytable" align="center" border="4" bordercolor="#cccccc">
 <col width="25px">
-<col width="60px">
-<col width="60px">
-<col width="60px">
-<col width="95px">
-<col width="95px">
-<col width="60px">
-<col width="60px">
-<col width="60px">
-<col width="30px">
-<col width="30px">
-<col width="30px">
-<col width="30px">
-<col width="60px">
-<col width="60px">
-<col width="60px">
-<col width="60px">
+<col width="50px">
+<col width="50px">
+<col width="70px">
+<col width="150px">
+<col width="40px">
+<col width="40px">
+<col width="50px">
+<col width="50px">
+<col width="50px">
+<col width="50px">
+<col width="50px">
+<col width="50px">
+<col width="50px">
+<col width="50px">
+<col width="50px">
+
 
 <tr bgcolor="0000cc">
-<th colspan="4" align="center" id="numberselected">Selected: 0</th>
-<th colspan="3" align="left"> x $175.00 </th>
-<th colspan="3" align="left" id="totalpriceofselected">= $0.00 </th>
-<th colspan="1" align="left"><input type="button" id="clearselected" value="1: CLEAR SELECTED"></th>
-<th colspan="2" align="right"><input type="button" id="addshoppingcart" value="2: ADD TO FINAL SELECTION" ></th>
-<th colspan="3" align="left"><input type="button" id="showcart" value="3: SHOW FINAL SELECTION"></th>
-<th colspan="2" rowspan="2" align="center"></th>
-
+<th colspan="3" align="center" id="numberselected">Selected: 0</th>
+<th colspan="1" align="left"> x $175.00 </th>
+<th colspan="1" align="left" id="totalpriceofselected">= $0.00 </th>
+ <th colspan="10" align="right"><input type="button" id="clearselected" value="1: CLEAR SELECTED">
+<input type="button" id="addshoppingcart" value="2: ADD TO FINAL SELECTION" >
+<input type="button" id="showcart" value="3: SHOW FINAL SELECTION"></th>
 
 
 <!--<th colspan="2" align="left"><input type="button" id="specialselect" value="SPECIAL SELECT"></th>-->
@@ -218,35 +258,35 @@
 <td colspan="4">
 <input type="button" id="selectall" value="SELECT ALL STATES">
 </td>
-<td align="left" colspan="13">Require
-<select id="selectattribute_cb">
-<option value="apn">APN</option>
-<option value="sit">Situs</option>
-<option value="owner">Owner</option>
-<option value="use">Land Use</option>
-<option value="val">Value</option>
-<option value="flr">Floors</option>
-<option value="unt">Unit</option>
-<option value="yrb">Year Built</option>
+<td align="left" colspan="11">Require
+<select id="selectattribute_cb" >
+<option value="apn" {% if attributemin == "apn" %} selected {% endif %}>APN</option>
+<option value="sit" {% if attributemin == "sit" %} selected {% endif %}>Situs</option>
+<option value="owner" {% if attributemin == "owner" %} selected {% endif %}>Owner</option>
+<option value="use" {% if attributemin == "use" %} selected {% endif %}>Land Use</option>
+<option value="val" {% if attributemin == "val" %} selected {% endif %}>Value</option>
+<option value="flr" {% if attributemin == "flr" %} selected {% endif %}>Floors</option>
+<option value="unt" {% if attributemin == "unt" %} selected {% endif %}>Unit</option>
+
 </select>
 coverage greater than
-<select id="selectpercent_cb">
-<option value="0">0%</option>
-<option value="50">50%</option>
-<option value="75">75%</option>
-<option value="90">90%</option>
+<select id="selectpercent_cb" >
+<option value="0" {% if minpercent == "0" %} selected {% endif %}>0%</option>
+<option value="50" {% if minpercent == "50" %} selected {% endif %}>50%</option>
+<option value="75" {% if minpercent == "75" %} selected {% endif %}>75%</option>
+<option value="90" {% if minpercent == "90" %} selected {% endif %}>90%</option>
 </select>
 complete:
 <input type="button" id="specialselect"  height="30px" value="Apply requirement to catalog" style="height:25px">
 <input type="button" id="resettofullcatalog" height="30px" value="Reset" style="height:25px">
 </td>
 </tr>
-<tr><td colspan="16"><b>INSTRUCTIONS:</b> <b>1:</b> Clear prior selections by clicking 'Clear Selected'. <b>2</b>: Select counties and click 'Add to Final Selection'. <b>3:</b> Click 'Show Final Selection'</td></tr>
+<tr><td colspan="15" style="font-family:calibri; color:#cc0000; font-size:15px"><b>INSTRUCTIONS:</b> <b>1:</b> Clear prior selections by clicking 'Clear Selected'. <b>2</b>: Select counties and click 'Add to Final Selection'. <b>3:</b> Click 'Show Final Selection'</td></tr>
 {% for state, counties in statecounties %}
-	<tr><td colspan=16><center><h3 id="{{state}}" >{{state}}</h3><a href="#">Go back to top</a></center></td></tr>
-	<tr><th colspan="2" name="{{state}}"  ><input type="button" name="selectstate" value="All"  style="width:60px"></th><th>FIP</th><th>STATE</th><th colspan="2"  >  COUNTY  </th><th>VERSION</th><th>COMP</th><th>%APN</th><th>%SIT</th><th>%OWN</th><th>%USE</th><th>%VAL</th><th>%FLR</th><th>%UNIT</th><th>%YRB</th></tr>
+	<tr><td colspan=15><center><h3 id="{{state}}" >{{state}}</h3><a href="#">Go back to top</a></center></td></tr>
+	<tr><th colspan="2" name="{{state}}"  ><input type="button" name="selectstate" value="All"  style="width:60px"></th><th>FIP</th><th>STATE</th><th colspan="2"  >  COUNTY  </th><th>VERSION</th><th>COMP</th><th>%APN</th><th>%SIT</th><th>%OWN</th><th>%USE</th><th>%VAL</th><th>%FLR</th><th>%UNIT</th></tr>
 	{% for col in counties %}
-    <tr><td></td><td><input type="checkbox" name="{{state}}" value="{{col.fip}}" id="{{col.fip}}"  class="BSICheckbox" > </td>
+    <tr style="font-size:14px"><td></td><td><input type="checkbox" name="{{state}}" value="{{col.fip}}" id="{{col.fip}}"  class="BSICheckbox" > </td>
           <td >{{ col.fip }}</td>
             <td >{{ col.state }}</td>
             <td colspan="2" >{{ col.county }}</td>
@@ -259,7 +299,6 @@ complete:
             <td>{{ col.valpercent }}</td>
             <td>{{ col.flrpercent }}</td>
             <td>{{ col.untpercent }}</td>
-            <td>{{ col.ybrpercent }}</td>
 
     </tr>
     {% endfor %}
@@ -269,24 +308,25 @@ complete:
 </form>
 </div>
 
-<div tab="tabs-2" style="width:850;margin:auto;clear:both;padding:auto;background:transparent;">
+<div tab="tabs-2" style="font-family:calibri;width:850;margin:auto;clear:both;padding:auto;background:transparent;">
 <form class="ShoppingCart" id="shoppingcartform">
 {% csrf_token %}
-<h3 align="center" id="titleconfirm" style="visibility:hidden" ><font color="cfcf66">Boundary Solutions County Parcels Data Order Confirmation</font></h3>
+<!--<h6 align="center" id="titleconfirm" style="visibility:hidden" ><font color="cfcf66">Boundary Solutions County Parcels Data Order Confirmation</font></h6>-->
+<p align="center" style="font-family:calibri; color:#cc0000; font-size:15px">Note: Select REQUEST QUOTE and receive one that will reflect quantity discount breaks at 10, 50, 100 and 500 counties.</p>
 <h4 align="center">FINAL SELECTION</h4>
-<table  class="ConfirmTable" align="center">
-	<tr><th colspan="15" align="right"><input type="button" id='showcatalog' value='BACK TO CATALOG'><input type="button" id="clearshoppingcart2" value="CLEAR SHOPPING CART"><input type="button" id="requestquote" value="4: REQUEST QUOTE"></th></tr>
+<table  class="ConfirmTable" align="center"
+	<tr><th colspan="15" align="right"><input type="button" id='showcatalog' value='BACK TO CATALOG'><input type="button" id="clearshoppingcart2" value="CLEAR FINAL SELECTION"><input type="button" id="requestquote" value="4: REQUEST QUOTE"></th></tr>
 </table>
-<table  id="orderquotetable" class="ConfirmTable" align="center">
-<tr id="cartheading"><th>FIP</th><th>STATE</th><th>COUNTY</th><th>VERSION</th><th>COMP</th><th>%APN</th><th>%SIT</th><th>%OWN</th><th>UUSE</th><th>VAL</th><th>FLR</th><th>UNIT</th><th>YRBUILT</th><th>PRICE</th></tr>
+<br>
+<table  id="orderquotetable" class="ConfirmTable" align="center" border="1" >
+<tr id="cartheading"><th>FIP</th><th>STATE</th><th>COUNTY</th><th>VERSION</th><th>COMP</th><th>%APN</th><th>%SIT</th><th>%OWN</th><th>%UUSE</th><th>%VAL</th><th>%FLR</th><th>%UNIT</th><th>PRICE</th></tr>
 </table>
 
 	<script language="javascript">
 
 		var directOrderMax = 5;
-		//var BASE_URL = "http://159.203.94.166/";
-
-		var BASE_URL = "http://127.0.0.1:8000/";
+		var BASE_URL = "http://159.203.94.166/";
+		//var BASE_URL = "http://127.0.0.1:8000/";
 		var picks = [];
 		var pickstable = [];
 
@@ -300,9 +340,16 @@ complete:
 			var html = '';
 			var unitcost = 175;
 			var totalprice = unitcost * pickstable.length;
-			for(var i = 0; i < pickstable.length; i++)
-						html += '<tr><td>' + pickstable[i][0] + '</td><td>' + pickstable[i][1] + '</td><td>' + pickstable[i][2] + '</td><td>' + pickstable[i][3] + '</td><td>' + pickstable[i][4] + '</td><td>' + pickstable[i][5] + '</td><td>' + pickstable[i][6] + '</td><td>' + pickstable[i][7] + '</td><td>' + pickstable[i][8] + '</td><td>' + pickstable[i][9] + '</td><td>' + pickstable[i][10] + '</td><td>' + pickstable[i][11] + '</td><td>' + pickstable[i][12] + '</td><td>$175</td></tr>';
-			//$('#orderquotetable tr').remove(); // Need way to clear prior shopping cart
+      var currentstate = "";
+			for(var i = 0; i < pickstable.length; i++){
+          if(currentstate != pickstable[i][1]){
+            currentstate = pickstable[i][1];
+            html += '<tr class="newstate"><td colspan="13" align="center"></td></tr>';
+
+          }
+					html += '<tr><td>' + pickstable[i][0] + '</td><td>' + pickstable[i][1] + '</td><td>' + pickstable[i][2] + '</td><td>' + pickstable[i][3] + '</td><td>' + pickstable[i][4] + '</td><td>' + pickstable[i][5] + '</td><td>' + pickstable[i][6] + '</td><td>' + pickstable[i][7] + '</td><td>' + pickstable[i][8] + '</td><td>' + pickstable[i][9] + '</td><td>' + pickstable[i][10] + '</td><td>' + pickstable[i][11] + '</td><td>$175</td></tr>';
+      }
+      //$('#orderquotetable tr').remove(); // Need way to clear prior shopping cart
 			$('#orderquotetable tr[id="cartheading"]').after(html);
 			//$('#orderquotetable').after("<p class='Confirmtable'>$" + totalprice + '</p>')
 		}
@@ -391,7 +438,7 @@ complete:
 		});
 */
 		$('#clearshoppingcart2').click(function () {
-			$('#addshoppingcart').val("2: Add to Shopping Cart");
+			$('#addshoppingcart').val("2: Add TO FINAL SELECTION");
 			$('#orderquotetable tr').not(':first').remove();
 			clearcatalogselection();
 		});
@@ -399,7 +446,7 @@ complete:
 		$('#addshoppingcart').click(function () {
 			 picks = [];
 			 pickstable = [];
-			 $('#addshoppingcart').val("2: Update Shopping Cart")
+			 $('#addshoppingcart').val("2: UPDATE FINAL SELECTION")
 
 			 $('#mytable').find('input[type="checkbox"]:checked').each(function () {
 				var $row = jQuery(this).closest('tr');
