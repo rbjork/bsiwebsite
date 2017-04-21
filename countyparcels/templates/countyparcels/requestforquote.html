@@ -163,7 +163,9 @@ li {
 {{ formset.non_form_errors }}
 {% load staticfiles %}
 <center>
-<img src="{% static "images/BSI_banner_order_v2.png" %}" align="center"  />
+<a href="..">
+<img id="headerimage" src="{% static "images/BSI_banner_order_v2.png" %}" align="center"  />
+</a>
 <!--<img src="images/BSI_banner_order.jpg"/>-->
 
 
@@ -175,13 +177,16 @@ li {
 
 <tr>
 <td colspan=3 style="line-height: 2em; background: #EFF3F7; bordercolor: #FFFFFF; font-family: Verdana; color: #003399; font-size: 85%;">*First Name <input name=FirstName size=15 type="text"  required>&nbsp;&nbsp;*Last Name <input type="text" name=LastName size=15  required>&nbsp;&nbsp;*Email <input name=Email size=30 type="email"  required>&nbsp;&nbsp; <BR>*Phone: <input  name=Phone type="text"  size=14 required>&nbsp;&nbsp;&nbsp;&nbsp;*Preferred method of contact:
-<input type=radio name=Contact value=Phone> Phone&nbsp;&nbsp;
-<input type=radio name=Contact value=Email> Email<br>
+<input type=radio name=Contact  value=Phone required> Phone&nbsp;&nbsp;
+<input type=radio name=Contact value=Email> Email&nbsp;&nbsp;
+<input type=radio name=Contact checked value=NoPreference > No Preference
+<br>
+
 </td>
 </tr>
 
 <tr>
-<td colspan=3 style="line-height: 2em; background: #003399; bordercolor: #FFFFFF; font-family: Verdana; color: #FFFFFF; size: 10px;">Org:<input type="text" name=Org size=30>&nbsp;&nbsp;Address 1<input name=Address1 size=20 type="text" >&nbsp;&nbsp;Address 2<input name=Address2 size=20 type="text" >&nbsp;&nbsp;&nbsp;&nbsp;<BR>City <input name=City size=20  required type="text" >&nbsp;&nbsp;&nbsp;&nbsp;U.S. State <select  name=State><OPTION SELECTED>Select State</OPTION>
+<td colspan=3 style="line-height: 2em; background: #003399; bordercolor: #FFFFFF; font-family: Verdana; color: #FFFFFF; size: 10px;">Org:<input type="text" name=Org size=30>&nbsp;&nbsp;Address 1<input name=Address1 size=20 type="text" >&nbsp;&nbsp;Address 2<input name=Address2 size=20 type="text" >&nbsp;&nbsp;&nbsp;&nbsp;<BR>*City <input name=City size=20  required type="text" >&nbsp;&nbsp;&nbsp;&nbsp;*U.S. State <select required  name=State><OPTION SELECTED>Select State</OPTION>
 
 <OPTION>Alabama
 
@@ -755,8 +760,8 @@ li {
 <tr>
 <td colspan=3 bgcolor="#003399" height=10 ></td></tr>
 <tr>
-<td colspan=3 style="line-height: 2em; background: #ffffff; bordercolor: #FFFFFF; font-family: Verdana; color: #003399; size: 10px;">Comments: <TEXTAREA NAME=Comments ROWS=2 COLS=50></TEXTAREA>
-<input type="submit" id="sendrequest" value="Send Request" style="font-size:11px; background-color:red; color:#FFF;">
+<td colspan=3 style="line-height: 2em; background: #ffffff; bordercolor: #FFFFFF; font-family: Verdana; color: #003399; size: 10px;">Comments: <TEXTAREA NAME=Comments ROWS=2 COLS=35></TEXTAREA>
+&nbsp;&nbsp; <input type="submit" id="sendrequest" value="Send Request" style="font-size:11px; background-color:red; color:#FFF;">
 <input type=button value='Reset Form' id="resetform_btn" style="font-size:11px; background-color:lightgray; color:#000000;"><BR>
 </td>
 </tr>
@@ -776,7 +781,7 @@ li {
 <tr><td colspan="3">
 <TEXTAREA NAME=fipsorder ROWS=5 COLS=100 contenteditable="false"  style="display:none;">
 {% for county in counties %}
-	{{county.state}},{{county.county}},{{county.fip}}
+	{{county.fip}}
 {% endfor %}
 </TEXTAREA></td></tr>
 </table>

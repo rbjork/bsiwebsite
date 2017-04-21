@@ -10,14 +10,13 @@ from django.contrib.sessions.models import Session
 from django import forms
 from django import template
 from django.template.defaultfilters import stringfilter
+
 import psycopg2
 from .forms import UploadFileForm
 
-
-
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Counties
+from .models import Counties, Simp
 import csv
 import json
 from itertools import groupby
@@ -54,7 +53,7 @@ def index(request):
     if request.path != '/countyparcels/':
         return HttpResponseRedirect('/countyparcels/')
 
-    latest_countyparcels_list = Counties.objects.all().order_by('state')
+    latest_countyparcels_list = Simp.objects.all().order_by('state','status') # Counties.objects.all().order_by('state','status')
 
     mediaroot = settings.MEDIA_ROOT
     currentpath = settings.CURRENT_PATH
@@ -222,7 +221,16 @@ def request4quote(request,misc):
         request.session[SHOPPING_CART] = {}
     return HttpResponse("True",content_type="text/plain")
 
+import random
+
 def quoteform(request,misc):
+    letters = 'ABCDEFGHIJKLMNOPQRTSUVWXYZ'
+    bsicode = []
+    for i in range(5):
+        bsicode.append(letters[random.randrange(25)])
+    bsicodestr = ''.join(bsicode)
+    request.session['bsicode'] = bsicodestr
+
     template = loader.get_template('countyparcels/requestforquote.html')
     try:
         counties = request.session[SHOPPING_CART]
@@ -230,11 +238,17 @@ def quoteform(request,misc):
         print e.message
         counties = None
     context = RequestContext(request, {
-        'counties':counties
+        'counties':counties,
+        'bsicode':bsicodestr
     })
     return HttpResponse(template.render(context))
 
 def sendrequest4quote(request,misc):
+    #bsicode = request.session['bsicode']
+    #codeentered = request.POST['code']
+    #if bsicode != codeentered:
+        #return HttpResponse('Invalid Submission. Try backtrack or start again')
+
     form = RequestForQuoteForm(request=request,label_suffix='')
     if form.is_valid():
         print "form is valid"
@@ -249,13 +263,13 @@ def sendrequest4quote(request,misc):
         print e.message
         return HttpResponse('Invalid Form data.')
 
-    recipients = ['ronaldbjork@sbcglobal.net','dklein@boundarysolutions.com']
+    recipients = ['ronaldbjork@sbcglobal.net','INFO@boundarysolutions.com']
     try:
         send_mail(subject, message, sender, recipients)
     except BadHeaderError as e:
         print e.message
         return HttpResponse('Invalid header found.')
-    return HttpResponse("<br><center><h2>Thanks for your interest. You'll be contacted within 2 business days</h2></center>")
+    return HttpResponse("<br><center><h2>Thanks for your interest. You'll be contacted within 2 business days</h2><br><a href='http://www.boundarysolutions.com/BSI/page1.php'>RETURN TO BSI</a></center>")
     #else:
        # print "Invalid Form"
         #return HttpResponse("<br><center><h2>Sorry. There was a problem with your order.</h2></center>")
@@ -272,7 +286,6 @@ def sendrequest4quote(request,misc):
 '''
 
 def loaderview(request,misc):
-
     path = "./orderpage.csv"
     with open(path) as f:
         reader = csv.reader(f)

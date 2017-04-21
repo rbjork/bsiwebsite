@@ -1,0 +1,360 @@
+    1  logout
+    2  python
+    3  pip
+    4  which python
+    5  psql
+    6  logout
+    7  cls
+    8  clear
+    9  python
+   10  python -c "import django; print(django.get_version())"
+   11  pip install flask
+   12  python
+   13  sudo pip install Flask
+   14  python
+   15  clear
+   16  ls
+   17  mkdir bsi
+   18  ls
+   19  getwd
+   20  getcwd
+   21  getcwd()
+   22  ls
+   23  cd bsi
+   24  mkdir templates
+   25  ls
+   26  mkdir images
+   27  ls
+   28  mkdir data
+   29  ls
+   30  cd ~
+   31  ls
+   32  cd bsi
+   33  ls
+   34  python orderformgeneratorwithgroups.py
+   35  sudo pip install paypalrestsdk
+   36  python orderformgeneratorwithgroups.py
+   37  sudo pip install Flask-Mail
+   38  python orderformgeneratorwithgroups.py
+   39  sudo pip install virtualenv
+   40  sudo apt-get update
+   41  mkdir ~/bsiordering
+   42  cd ..
+   43  ls
+   44  cd bsiordering
+   45  virtualenv bsienv
+   46  source bsienv/bin/activate
+   47  sudo pip install gunicorn flask
+   48  nano ~/bsiordering/bsiordering.py
+   49  ls
+   50  del bsiordering.py
+   51  rm bsiordering.py
+   52  ls
+   53  python
+   54  which python
+   55  sudo pip install Flask-Mail
+   56  python
+   57  which python
+   58  pip install Flask-Mail
+   59  python
+   60  python orderformgeneratorwithgroups.py
+   61  pip install paypalrestsdk
+   62  python orderformgeneratorwithgroups.py
+   63  logout
+   64  cd bsi
+   65  ls
+   66  sudo apt-get install libapache2-mod-wsgi python-dev
+   67  sudo a2enmod wsgi
+   68  cd /var/www
+   69  clear
+   70  ls
+   71  cd ..
+   72  ls
+   73  logout
+   74  sudo apt-get install gdal-bin libgdal1-dev
+   75  sudo apt-get install libgeos-c1 libgeos-dev
+   76  ogr2ogr
+   77  ls
+   78  cd ..
+   79  logout
+   80  psql django
+   81  logout
+   82  psql django
+   83  logout
+   84  ls
+   85  cd ..
+   86  ls
+   87  cd django
+   88  ls
+   89  cd django_project
+   90  ls
+   91  python manage.py syncdb
+   92  exit
+   93  psql django
+   94  ls
+   95  gdal
+   96  qdal
+   97  gdal
+   98  cd ..
+   99  ls
+  100  mkdir geoinstalls
+  101  sudo mkdir geoinstalls
+  102  ls
+  103  cd django
+  104  ls
+  105  sudo apt-get install binutils libproj-dev gdal-bin
+  106  gdal
+  107  ogr2ogr
+  108  wget http://download.osgeo.org/geos/geos-3.4.2.tar.bz2
+  109  sudo wget http://download.osgeo.org/geos/geos-3.4.2.tar.bz2
+  110  ls
+  111  sudo tar xjf geos-3.4.2.tar.bz2
+  112  ls
+  113  cd geos-3.4.2
+  114  ./configure
+  115  sudo ./configure
+  116  ls
+  117  cd ..
+  118  ls
+  119  cd geos-3.4.2
+  120  ls
+  121  sudo make
+  122  sudo make install
+  123  cd ..
+  124  ls
+  125  sudo wget http://download.osgeo.org/proj/proj-4.9.1.tar.gz
+  126  ls
+  127  sudo wget http://download.osgeo.org/proj/proj-datumgrid-1.5.tar.gz
+  128  ls
+  129  sudo tar xzf proj-4.9.1.tar.gz
+  130  ls
+  131  cd proj-4.9.1/nad
+  132  ls
+  133  sudo tar xzf ../../proj-datumgrid-1.5.tar.gz
+  134  ls
+  135  cd ..
+  136  ls
+  137  sudo ./configure
+  138  make
+  139  sudo make
+  140  sudo make install
+  141  cd ..
+  142  python
+  143  exit
+  144  psql
+  145  psql django
+  146  exit
+  147  $CATALINA_HOME/bin/startup.sh
+  148  sudo nano ~/.bashrc
+  149  ls
+  150  cd /usr
+  151  ls
+  152  cd lib
+  153  ls
+  154  cd jvm
+  155  ls
+  156  cd ~
+  157  sudo nano ~/.bashrc
+  158  . ~/.bashrc
+  159  $CATALINA_HOME/bin/startup.sh
+  160  cd /opt
+  161  ls
+  162  cd ..
+  163  ls
+  164  cd usr
+  165  ls
+  166  cd local
+  167  ls
+  168  cd lib
+  169  ls
+  170  cd ..
+  171  ls
+  172  cd ..
+  173  ls
+  174  cd bin
+  175  ls
+  176  cd ..
+  177  ls
+  178  cd var
+  179  ls
+  180  cd www
+  181  ls
+  182  cd ..
+  183  ls
+  184  cd local
+  185  ls
+  186  cd ..
+  187  ls
+  188  cd usr
+  189  ls
+  190  cd src
+  191  ls
+  192  cd ..
+  193  cd /etc
+  194  ls
+  195  cd default
+  196  ls
+  197  cd tomcat7
+  198  ls
+  199  cd tomcat7
+  200  sudo service tomcat7 restart
+  201  cd ..
+  202  ls
+  203  cd tomcat7
+  204  ls
+  205  cd Catalina
+  206  ls
+  207  cd localhost
+  208  ls
+  209  cd /var/lib
+  210  ls
+  211  ct tomcat7
+  212  ls
+  213  cd tomcat7
+  214  ls
+  215  cd webapps
+  216  ls
+  217  cd ROOT
+  218  ls
+  219  cd ..
+  220  ls
+  221  cd ..
+  222  ls
+  223  cd ocmmaon
+  224  cd common
+  225  ls
+  226  cd ..
+  227  cd work
+  228  cd server
+  229  ls
+  230  cd classes
+  231  cd ..
+  232  cd .
+  233  cd ..
+  234  cd /usr/share
+  235  ls
+  236  cd tomcat7
+  237  ls
+  238  sudo nano ~/.bashrc
+  239  . ~/.bashrc
+  240  $CATALINA_HOME/bin/startup.sh
+  241  $CATALINA_HOME/bin/shutdown.sh
+  242  $CATALINA_HOME/bin/Shutdown.sh
+  243  $CATALINA_HOME/bin/shutdown.sh
+  244  exit
+  245  ls
+  246  cd bsiordering
+  247  ls
+  248  cd ..
+  249  ls
+  250  cd ..
+  251  ls
+  252  psql -d watersedge
+  253  psql
+  254  psql -d django
+  255  ls
+  256  cd django
+  257  ls
+  258  cd django_project
+  259  ls
+  260  psql -d django -f updateremovepercent.sql
+  261  psql -d django
+  262  ls
+  263  psql -d django -f updateremovepercentdgocn.sql
+  264  psql -d django -f removepercentdgocn.sql
+  265  psql -d django
+  266  ls
+  267  psql -d django -f AlterTypeDgOcn.sql
+  268  ls
+  269  python manage.py makemigrations
+  270  python manage.py syncdb
+  271  exit
+  272  ls
+  273  cd bsi
+  274  ls
+  275  cd templates
+  276  ls
+  277  cd ..
+  278  ls
+  279  cd geoserver
+  280  ls
+  281  cd ..
+  282  ls
+  283  cd bsiordering
+  284  ls
+  285  cd templates
+  286  ls
+  287  ls -l
+  288  cd ..
+  289  cd bsi
+  290  ls -l
+  291  cd templates
+  292  ls -l
+  293  cd ..
+  294  ls -l
+  295  cd ..
+  296  ls
+  297  ls -l
+  298  sudo shutdown -h now
+  299  ls
+  300  logout
+  301  history
+  302  pwd
+  303  ls
+  304  history > command_history.txt
+  305  ls
+  306  cd bsiordering
+  307  ls
+  308  cd ..
+  309  ls
+  310  cd bsi
+  311  ls
+  312  cd ..
+  313  cd geoserver
+  314  cd ~
+  315  ls
+  316  cd geoserver
+  317  ls
+  318  cd ..
+  319  ls
+  320  cd bsi
+  321  ls
+  322  cd data
+  323  ls
+  324  cd ..
+  325  cd bsiorderings
+  326  cd bsiordering
+  327  ls
+  328  cd bsienv
+  329  ls
+  330  cd local
+  331  ls
+  332  cd ..
+  333  cd /home
+  334  ls
+  335  pwd
+  336  ls
+  337  cd ron
+  338  ls
+  339  del command_history.txt
+  340  rm command_history.txt
+  341  ls
+  342  cd ..
+  343  ls
+  344  cd django
+  345  cd django_project
+  346  ls
+  347  history > commandline_history.txt
+  348  touch history.txt
+  349  nano history.txt
+  350  o
+  351  cd ..
+  352  psql
+  353  cd ..
+  354  ls
+  355  history > cmd_history.txt
+  356  ls
+  357  cd ron
+  358  pwd
+  359  ls
+  360  history > cmd_history.txt

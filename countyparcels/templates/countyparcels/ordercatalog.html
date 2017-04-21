@@ -180,8 +180,8 @@
 <col width="60px">
 <tr bgcolor="0000cc">
 <th colspan="2" align="left" id="numberselected">Selected: 0</th>
-<th colspan="2" align="left"> x $175.00 </th>
-<th colspan="2" align="left" id="totalpriceofselected">= $0.00 </th>
+<th colspan="2" align="left">  </th>
+<th colspan="2" align="left" id="totalpriceofselected"> </th>
 <th colspan="2" align="left"><input type="button" id="clearselected" value="CLEAR SELECTED"></th>
 <th colspan="4" align="left"><input type="button" id="addshoppingcart" value="ADD TO FINAL SELECTION" ></th>
 <th colspan="4" align="left"><input type="button" id="clearshoppingcart" value="CLEAR FINAL SELECTION"></th>
@@ -279,7 +279,7 @@
                 pickcount = pickcount + 1;
 			});
 			$('#numberselected').html("Number Selected: " + pickcount);
-			$('#totalpriceofselected').html(" = $" + pickcount*175 + ".00 Total");
+			//$('#totalpriceofselected').html(" = $" + pickcount*175 + ".00 Total");
 		}
 
 		$('#buynow').click(function(){

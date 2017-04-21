@@ -1,0 +1,35 @@
+    1  ls
+    2  cd django_project
+    3  ls
+    4  logout
+    5  psql
+    6  logout
+    7  ls
+    8  cd django_projects
+    9  cd django_project
+   10  ls
+   11  clear
+   12  ls
+   13  ogr2ogr
+   14  logout
+   15  ls
+   16  cd django_project
+   17  ls
+   18  psql
+   19  logout
+   20  cd django_project
+   21  ls
+   22  psql django < bsicounties.sql
+   23  psql
+   24  logout
+   25  psql
+   26  psql django
+   27  sudu su - django
+   28  sudo -su - django
+   29  sudo su - django
+   30  sudo su - postgres
+   31  logout
+   32  ls
+   33  pwd
+   34  cd django_project
+   35  history > cmd_history.txt
